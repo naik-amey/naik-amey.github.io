@@ -13,7 +13,7 @@ permalink: docs/pytorch
 My pytorch notes.
 {: .fs-6 .fw-300 }
 
-# Steps to install pytorch on mac M1 silicon
+## Steps to install pytorch on mac M1 silicon
 
 ```bash
   curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh\nsh Miniconda3-latest-MacOSX-arm64.sh
@@ -22,7 +22,7 @@ My pytorch notes.
   conda activate pytorch_m1 
 ```
 
-## Follow these steps to avoid numpy error whule importing torch in python
+## Follow these steps to avoid numpy error while importing torch
 
 ```bash
   conda clean --all
