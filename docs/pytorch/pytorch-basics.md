@@ -5,7 +5,7 @@ parent: Pytorch
 nav_order: 2
 ---
 
-# Buttons
+# Pytorch Basics
 {: .no_toc }
 
 ## Table of contents
@@ -16,7 +16,95 @@ nav_order: 2
 
 ---
 
-## Basic button styles
+## pytorch we deal with tensors
+
+```python
+x = torch.empty(3) # 1D tensor
+x = torch.empty(3,2) # 2D tensor
+```
+
+## To create tensor with random values
+
+```python
+x = torch.rand(3,2)
+x = torch.zeros(3,2) # for zeros
+x = torch.ones(3,2) # for ones.
+```
+
+## We can check the datatype and set datatype
+ 
+```python
+print(x.dtype) # by default it is float32.
+
+x = torch.ones(3,2,dtype = torch.int) # --> int32.
+x = torch.ones(3,2,dtype = torch.double) # -->
+x = torch.ones(3,2,dtype = torch.float16) # -->
+```
+
+## check the size
+
+```python
+print(x.size())
+```
+
+## add values
+
+```python
+x = torch.tensor([2.5, 0.1]) # we custom values.
+y = torch.tensor([4.5, 3.1]) # we custom values.
+z = x + y
+or
+z = torch.add(x,y)
+```
+
+## inplace addtion
+
+```python
+y.add_(x) # every function that has trailing _ (underscore) will do inplace operation.
+similarly mul,sub,div
+```
+
+## slicing operation
+
+```python
+print(x[:, 1]) # all rows, column 1st (indexing from zero)
+```
+
+## reshaping the tensor
+
+```python
+x = torch.rand(4,4)
+y = x.view(16) # converts it into 1D tensor. 1x16
+y = x.view(-1,8) # converts it into 1D tensor. 2x8 ; pytorch automatically determines the size of -1 index.
+```
+
+## changing types from tensor to numpy and vice versa
+
+```python
+a = torch.ones(5)
+b = a.numpy() # both a and b are pointing to the same location.
+
+a.add_(1) # this also changes b.
+
+c = torch.from_numpy(b) # from numpy to tensor
+```
+
+## to gpu if available
+
+```python
+if torch.cuda.is_available("cuda"):
+    device = torch.device("cuda")
+    x = torch.ones(5, device = device)
+    y = y.to(device)
+    z = x + y
+    z = z.to("cpu")
+```
+
+## requires_grad - requires gradient to be calculated (default is false)
+
+```python
+x = torch.ones(5, requires_grad = True)
+```
 
 ### Links that look like buttons
 
